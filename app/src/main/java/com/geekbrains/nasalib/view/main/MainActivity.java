@@ -2,20 +2,42 @@ package com.geekbrains.nasalib.view.main;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+
 import com.geekbrains.nasalib.R;
+import com.geekbrains.nasalib.databinding.ActivityMainBinding;
+import com.geekbrains.nasalib.presenter.main.MainPresenter;
 
 import moxy.MvpAppCompatActivity;
+import moxy.presenter.InjectPresenter;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
+
+    private ActivityMainBinding mainBinding;
+
+    @InjectPresenter
+    MainPresenter mainPresenter;
+
+    private MainRVA mainRVA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mainBinding = DataBindingUtil
+                .setContentView(this, R.layout.activity_main);
+    }
+
+    private void initRecycler(){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3); // количество колонок вынесьт в настройки
+        mainBinding.recyclerView.setLayoutManager(gridLayoutManager);
+        mainRVA = new MainRVA(mainPresenter.getMedia(), mainPresenter);
+        mainBinding.recyclerView.setAdapter(mainRVA);
     }
 
     @Override
     public void updateRecyclerView() {
-        
+        initRecycler();
+        mainRVA.notifyDataSetChanged();
     }
 }
