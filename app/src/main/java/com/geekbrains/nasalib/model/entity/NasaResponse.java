@@ -2,12 +2,17 @@ package com.geekbrains.nasalib.model.entity;
 
 import androidx.room.Entity;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class NasaResponse {
-    private List<Link> links;
+    @Expose
+    @SerializedName("collection")
+    private Collection collection;
 
-    public List<Link> getLinks() {
-        return links;
+    public Collection getCollection() {
+        return collection;
     }
 }
