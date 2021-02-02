@@ -3,7 +3,9 @@ package com.geekbrains.nasalib.model.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+import java.util.List;
+
+public class ItemData {
     @Expose
     @SerializedName("description")
     private String description;

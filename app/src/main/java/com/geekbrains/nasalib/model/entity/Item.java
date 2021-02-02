@@ -7,10 +7,22 @@ import java.util.List;
 
 public class Item {
     @Expose
-    @SerializedName("data")
-    private List<Itemdata> data;
+    @SerializedName("links")
+    private List<ItemLinks> links;
 
-    public List<Itemdata> getData() {
-        return data;
+    @Expose
+    @SerializedName("data")
+    private List<ItemData> data;
+
+    @Expose
+    @SerializedName("href")
+    private String href;
+
+    public String getHref() {
+        return href;
+    }
+
+    public List<ItemLinks> getLinks() {
+        return links;
     }
 }

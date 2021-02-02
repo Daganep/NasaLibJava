@@ -59,7 +59,7 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
         void bind(int position){
             this.position = position;
-            imageSetter.setImage("Here will be URL", imageView);
+            imageSetter.setImage(items.get(position).getLinks().get(0).getHref(), imageView);
         }
     }
 }

@@ -27,7 +27,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     }
 
     private void initRecycler(){
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mainBinding.recyclerView.setLayoutManager(gridLayoutManager);
         mainRVA = new MainRVA(mainPresenter.getMedia(), mainPresenter);
         mainBinding.recyclerView.setAdapter(mainRVA);
