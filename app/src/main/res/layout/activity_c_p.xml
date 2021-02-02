@@ -3,35 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.currentphoto.CPActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/stars">
+        android:background="@drawable/stars"
+        android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/currentPhotoIV"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/current_image">
-        </ImageView>
+            android:orientation="vertical"
+            android:background="@color/black"
+            android:padding="@dimen/norm_padding">
 
-        <TextView
-            android:id="@+id/CPTitleTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </TextView>
-        <TextView
-            android:id="@+id/CPDateTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </TextView>
-        <TextView
-            android:id="@+id/CPCreatorTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </TextView>
+            <ImageView
+                android:id="@+id/currentPhotoIV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/current_image">
+            </ImageView>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/CPTitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/CP_text_margin">
+            </TextView>
+            <TextView
+                android:id="@+id/CPDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/CP_text_margin">
+            </TextView>
+            <TextView
+                android:id="@+id/CPCreatorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/CP_text_margin">
+            </TextView>
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </layout>

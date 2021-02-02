@@ -1,7 +1,6 @@
 package com.geekbrains.nasalib.presenter;
 
 import android.util.Log;
-
 import com.geekbrains.nasalib.di.App;
 import com.geekbrains.nasalib.model.entity.Item;
 import com.geekbrains.nasalib.model.entity.NasaResponse;

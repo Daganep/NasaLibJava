@@ -2,6 +2,7 @@ package com.geekbrains.nasalib.view.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.geekbrains.nasalib.R;
+import com.geekbrains.nasalib.model.entity.CEInfo;
 import com.geekbrains.nasalib.model.entity.Item;
 import com.geekbrains.nasalib.model.picasso.ImageSetter;
 import com.geekbrains.nasalib.presenter.MainPresenter;
@@ -21,6 +23,7 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
     private final List<Item> items;
     private final MainPresenter presenter;
     private final ImageSetter imageSetter;
+    private final String TAG = "Retrofit";
 
     public MainRVA(List<Item> items, MainPresenter presenter){
         this.items = items;
@@ -54,20 +57,22 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
         ImageView imageView;
         int position;
+        CEInfo ceInfo;
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.previewIV);
             imageView.setOnClickListener(view -> {
+
                 Intent intent = new Intent(imageView.getContext(), CPActivity.class);
+                intent.putExtra(CEInfo.class.getSimpleName(), ceInfo);
                 imageView.getContext().startActivity(intent);
             });
         }
 
-
-
         void bind(int position){
             this.position = position;
+            ceInfo = new CEInfo(items.get(position));
             imageSetter.setImage(items.get(position).getLinks().get(0).getHref(), imageView);
         }
     }

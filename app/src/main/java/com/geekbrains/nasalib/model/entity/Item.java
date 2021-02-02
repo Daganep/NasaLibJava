@@ -3,6 +3,7 @@ package com.geekbrains.nasalib.model.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class Item {
@@ -24,5 +25,9 @@ public class Item {
 
     public List<ItemLinks> getLinks() {
         return links;
+    }
+
+    public List<ItemData> getData() {
+        return data;
     }
 }
