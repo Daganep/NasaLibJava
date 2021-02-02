@@ -1,5 +1,6 @@
 package com.geekbrains.nasalib.di;
 
+import com.geekbrains.nasalib.model.retrofit.RetrofitApi;
 import com.geekbrains.nasalib.presenter.main.MainPresenter;
 
 import javax.inject.Singleton;

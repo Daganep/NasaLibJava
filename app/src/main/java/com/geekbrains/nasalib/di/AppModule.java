@@ -2,6 +2,7 @@ package com.geekbrains.nasalib.di;
 
 import android.app.Application;
 
+import com.geekbrains.nasalib.model.entity.Item;
 import com.geekbrains.nasalib.model.entity.NasaResponse;
 import com.geekbrains.nasalib.model.retrofit.RetrofitApi;
 

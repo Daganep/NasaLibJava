@@ -8,22 +8,19 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.geekbrains.nasalib.R;
-import com.geekbrains.nasalib.model.entity.Link;
+import com.geekbrains.nasalib.model.entity.Item;
 import com.geekbrains.nasalib.model.picasso.ImageSetter;
 import com.geekbrains.nasalib.presenter.main.MainPresenter;
-
 import java.util.List;
-
-import moxy.presenter.InjectPresenter;
 
 public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
-    private List<Link> photos;
-    private MainPresenter presenter;
-    private ImageSetter imageSetter;
+    private final List<Item> items;
+    private final MainPresenter presenter;
+    private final ImageSetter imageSetter;
 
-    public MainRVA(List<Link> photos, MainPresenter presenter){
-        this.photos = photos;
+    public MainRVA(List<Item> items, MainPresenter presenter){
+        this.items = items;
         this.presenter = presenter;
         imageSetter = new ImageSetter();
     }
@@ -47,7 +44,7 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
     @Override
     public int getItemCount() {
-        return photos.size();
+        return items.size();
     }
 
     class ImageViewHolder extends RecyclerView.ViewHolder {
