@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.currentphoto.CPActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/stars">
+
+        <ImageView
+            android:id="@+id/currentPhotoIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/current_image">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/CPTitleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:id="@+id/CPDateTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:id="@+id/CPCreatorTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+</layout>

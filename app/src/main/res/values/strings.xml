@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NasaLib</string>
     <string name="media_preview">media preview</string>
+    <string name="current_image">current image</string>
 </resources>

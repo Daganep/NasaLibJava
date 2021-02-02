@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityMainBinding;
-import com.geekbrains.nasalib.presenter.main.MainPresenter;
+import com.geekbrains.nasalib.presenter.MainPresenter;
 import moxy.MvpAppCompatActivity;
 import moxy.presenter.InjectPresenter;
 

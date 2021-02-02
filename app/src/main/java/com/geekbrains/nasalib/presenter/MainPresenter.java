@@ -1,4 +1,4 @@
-package com.geekbrains.nasalib.presenter.main;
+package com.geekbrains.nasalib.presenter;
 
 import android.util.Log;
 
