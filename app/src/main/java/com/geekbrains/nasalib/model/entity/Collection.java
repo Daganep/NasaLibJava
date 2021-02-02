@@ -16,8 +16,8 @@ public class Collection {
     private String href;
 
     @Expose
-    @SerializedName("meatdata")
-    private Metadata meatdata;
+    @SerializedName("metadata")
+    private Metadata metadata;
 
     @Expose
     @SerializedName("items")
@@ -35,8 +35,8 @@ public class Collection {
         return href;
     }
 
-    public Metadata getMeatdata() {
-        return meatdata;
+    public Metadata getMetadata() {
+        return metadata;
     }
 
     public List<Item> getItems() {
