@@ -1,5 +1,6 @@
 package com.geekbrains.nasalib.view.main;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,6 +14,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     private ActivityMainBinding mainBinding;
     private final String TAG = "Retrofit";
+    private int columns;
     @InjectPresenter
     MainPresenter mainPresenter;
 
@@ -23,11 +25,13 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil
                 .setContentView(this, R.layout.activity_main);
+
+        columns = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2;
         mainPresenter.requestFromServer();
     }
 
     private void initRecycler(){
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, columns);
         mainBinding.recyclerView.setLayoutManager(gridLayoutManager);
         mainRVA = new MainRVA(mainPresenter.getMedia(), mainPresenter);
         mainBinding.recyclerView.setAdapter(mainRVA);
