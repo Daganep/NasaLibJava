@@ -1,10 +1,12 @@
 package com.geekbrains.nasalib.view.currentphoto;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityCPBinding;
@@ -32,6 +34,7 @@ public class CPActivity extends MvpAppCompatActivity implements CPView {
         super.onCreate(savedInstanceState);
         cpActivity = DataBindingUtil
                 .setContentView(this, R.layout.activity_c_p);
+        initToolbar();
         imageSetter = new ImageSetter();
         ceInfo = (CEInfo) getIntent().getSerializableExtra(CEInfo.class.getSimpleName());
         setData(ceInfo);
@@ -42,5 +45,17 @@ public class CPActivity extends MvpAppCompatActivity implements CPView {
         cpActivity.CPTitleTV.setText(ceInfo.getTitle());
         cpActivity.CPCreatorTV.setText(ceInfo.getCreator());
         cpActivity.CPDateTV.setText(ceInfo.getData());
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(cpActivity.toolbar);
+        if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override public boolean onSupportNavigateUp () {
+        onBackPressed() ;
+        return true;
     }
 }

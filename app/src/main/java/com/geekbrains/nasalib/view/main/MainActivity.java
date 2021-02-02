@@ -25,7 +25,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil
                 .setContentView(this, R.layout.activity_main);
-
+        initToolbar();
         columns = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2;
         mainPresenter.requestFromServer();
     }
@@ -41,5 +41,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     public void updateRecyclerView(){
         initRecycler();
         mainRVA.notifyDataSetChanged();
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(mainBinding.toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
     }
 }
