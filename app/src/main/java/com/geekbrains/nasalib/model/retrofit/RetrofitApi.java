@@ -1,5 +1,7 @@
 package com.geekbrains.nasalib.model.retrofit;
 
+import android.util.Log;
+
 import com.geekbrains.nasalib.model.entity.NasaResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

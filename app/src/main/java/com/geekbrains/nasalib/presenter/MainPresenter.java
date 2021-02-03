@@ -32,20 +32,11 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
     public void requestFromServer(String query){
         Observable<NasaResponse> single = retrofitApi.requestServer(query);
-
         disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(emitter -> {
-            nasaResponse = emitter;
-            getViewState().updateRecyclerView();
+            getViewState().updateRecyclerView(emitter);
         }, throwable -> {
             Log.e("Error", "onError" + throwable);
         });
-    }
-
-    public List<Item> getMedia(){
-        items = nasaResponse.getCollection().getItems();
-        Log.d(TAG, "Total: " + nasaResponse.getCollection().getMetadata().getTotalHits());
-        getViewState().emptyResultMessage(items.size() == 0);
-        return items;
     }
 
     @Override

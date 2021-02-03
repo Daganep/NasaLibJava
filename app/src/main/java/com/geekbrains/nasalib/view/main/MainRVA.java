@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.model.entity.CEInfo;
 import com.geekbrains.nasalib.model.entity.Item;
+import com.geekbrains.nasalib.model.entity.NasaResponse;
 import com.geekbrains.nasalib.model.picasso.ImageSetter;
 import com.geekbrains.nasalib.presenter.MainPresenter;
 import com.geekbrains.nasalib.view.currentphoto.CPActivity;
@@ -20,15 +21,17 @@ import java.util.List;
 
 public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
-    private final List<Item> items;
-    private final MainPresenter presenter;
     private final ImageSetter imageSetter;
     private final String TAG = "Retrofit";
+    private List<Item> items;
 
-    public MainRVA(List<Item> items, MainPresenter presenter){
-        this.items = items;
-        this.presenter = presenter;
+    public MainRVA(){
         imageSetter = new ImageSetter();
+    }
+
+    public void setMedia(List<Item> items){
+        this.items = items;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -45,12 +48,12 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        holder.bind(position);
+        if(items != null) holder.bind(position);
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items != null ? items.size() : 0;
     }
 
     class ImageViewHolder extends RecyclerView.ViewHolder {

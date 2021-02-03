@@ -3,6 +3,7 @@ package com.geekbrains.nasalib.view.main;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityMainBinding;
+import com.geekbrains.nasalib.model.entity.NasaResponse;
 import com.geekbrains.nasalib.presenter.MainPresenter;
 import com.geekbrains.nasalib.view.aboutapp.AboutActivity;
 
@@ -38,22 +40,29 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil
                 .setContentView(this, R.layout.activity_main);
-        initToolbar();
         columns = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2;
+        initToolbar();
+        initRecycler();
         mainPresenter.requestFromServer(stdQuery);
     }
 
     private void initRecycler(){
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, columns);
         mainBinding.mainRV.setLayoutManager(gridLayoutManager);
-        mainRVA = new MainRVA(mainPresenter.getMedia(), mainPresenter);
+        mainRVA = new MainRVA();
         mainBinding.mainRV.setAdapter(mainRVA);
     }
 
     @Override
-    public void updateRecyclerView(){
-        initRecycler();
-        mainRVA.notifyDataSetChanged();
+    public void updateRecyclerView(NasaResponse nasaResponse){
+
+        if (nasaResponse != null && nasaResponse.getCollection() != null && nasaResponse.getCollection().getItems() != null){
+            Log.d(TAG, "in MA");
+            emptyResultMessage(nasaResponse.getCollection().getItems().size() == 0);
+            mainRVA.setMedia(nasaResponse.getCollection().getItems());
+            mainRVA.notifyDataSetChanged();
+        }
+
     }
 
     private void initToolbar() {
