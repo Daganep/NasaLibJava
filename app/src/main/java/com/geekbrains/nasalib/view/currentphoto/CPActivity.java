@@ -5,11 +5,9 @@ import android.os.Bundle;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityCPBinding;
 import com.geekbrains.nasalib.model.entity.CEInfo;
-import com.geekbrains.nasalib.model.picasso.ImageSetter;
+import com.geekbrains.nasalib.utils.picasso.ImageSetter;
 import com.geekbrains.nasalib.presenter.CPPresenter;
-
 import java.util.Objects;
-
 import moxy.MvpAppCompatActivity;
 import moxy.presenter.InjectPresenter;
 

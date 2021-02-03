@@ -55,26 +55,20 @@
                         android:id="@+id/CPTitleTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="@dimen/CP_text_margin"
-                        android:layout_marginStart="@dimen/CP_text_margin">
+                        style="@style/CurrentPhotoText">
                     </TextView>
                     <TextView
                         android:id="@+id/CPDateTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="@dimen/CP_text_margin"
-                        android:layout_marginStart="@dimen/CP_text_margin">
+                        style="@style/CurrentPhotoText">
                     </TextView>
                     <TextView
                         android:id="@+id/CPCreatorTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="@dimen/CP_text_margin"
-                        android:layout_marginBottom="@dimen/CP_text_margin"
-                        android:layout_marginStart="@dimen/CP_text_margin">
+                        style="@style/CurrentPhotoText"
+                        android:layout_marginBottom="@dimen/CP_text_margin">
                     </TextView>
 
                 </LinearLayout>

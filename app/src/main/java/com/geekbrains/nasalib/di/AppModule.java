@@ -1,15 +1,10 @@
 package com.geekbrains.nasalib.di;
 
 import android.app.Application;
-
-import com.geekbrains.nasalib.model.entity.CEInfo;
-import com.geekbrains.nasalib.model.entity.Item;
 import com.geekbrains.nasalib.model.entity.NasaResponse;
-import com.geekbrains.nasalib.model.picasso.ImageSetter;
+import com.geekbrains.nasalib.utils.picasso.ImageSetter;
 import com.geekbrains.nasalib.model.retrofit.RetrofitApi;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

@@ -1,7 +1,6 @@
-package com.geekbrains.nasalib.model.picasso;
+package com.geekbrains.nasalib.utils.picasso;
 
 import android.widget.ImageView;
-
 import com.squareup.picasso.Picasso;
 
 public class ImageSetter {

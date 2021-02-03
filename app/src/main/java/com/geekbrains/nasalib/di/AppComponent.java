@@ -2,10 +2,7 @@ package com.geekbrains.nasalib.di;
 
 import com.geekbrains.nasalib.presenter.CPPresenter;
 import com.geekbrains.nasalib.presenter.MainPresenter;
-import com.geekbrains.nasalib.view.main.MainRVA;
-
 import javax.inject.Singleton;
-
 import dagger.Component;
 
 @Singleton

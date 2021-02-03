@@ -45,9 +45,6 @@
                 android:layout_marginEnd="@dimen/logo_right_margin"
                 android:contentDescription="@string/nasa_logo"
                 android:src="@drawable/nasa_logo"/>
-
         </LinearLayout>
-
     </FrameLayout>
-
 </layout>

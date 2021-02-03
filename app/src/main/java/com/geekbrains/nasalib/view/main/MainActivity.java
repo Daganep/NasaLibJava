@@ -3,7 +3,6 @@ package com.geekbrains.nasalib.view.main;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,13 +25,11 @@ import moxy.presenter.InjectPresenter;
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     private ActivityMainBinding mainBinding;
-    private final String TAG = "Retrofit";
     private int columns;
     private final String stdQuery = "hubble";
+    private MainRVA mainRVA;
     @InjectPresenter
     MainPresenter mainPresenter;
-
-    private MainRVA mainRVA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +51,11 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     @Override
     public void updateRecyclerView(NasaResponse nasaResponse){
-
         if (nasaResponse != null && nasaResponse.getCollection() != null && nasaResponse.getCollection().getItems() != null){
             emptyResultMessage(nasaResponse.getCollection().getItems().size() == 0);
             mainRVA.setMedia(nasaResponse.getCollection().getItems());
             mainRVA.notifyDataSetChanged();
         }
-
     }
 
     private void initToolbar() {
@@ -114,7 +109,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             Toast.makeText(this, (R.string.not_work_button), Toast.LENGTH_SHORT).show();
             return false;
         });
-
         return true;
     }
 

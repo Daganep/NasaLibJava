@@ -19,7 +19,6 @@ public class CEInfo implements Serializable {
         }
     }
 
-
     public String getURL() {
         return URL;
     }

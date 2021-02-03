@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.model.entity.CEInfo;
 import com.geekbrains.nasalib.model.entity.Item;
-import com.geekbrains.nasalib.model.picasso.ImageSetter;
+import com.geekbrains.nasalib.utils.picasso.ImageSetter;
 import com.geekbrains.nasalib.view.currentphoto.CPActivity;
 
 import java.util.List;
@@ -19,7 +19,6 @@ import java.util.List;
 public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
 
     private final ImageSetter imageSetter;
-    private final String TAG = "Retrofit";
     private List<Item> items;
 
     public MainRVA(){
@@ -36,10 +35,8 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         int layoutId = R.layout.main_vh;
-
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layoutId, parent, false);
-
         return new ImageViewHolder(view);
     }
 
@@ -63,7 +60,6 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
             super(itemView);
             imageView = itemView.findViewById(R.id.previewIV);
             imageView.setOnClickListener(view -> {
-
                 Intent intent = new Intent(imageView.getContext(), CPActivity.class);
                 intent.putExtra(CEInfo.class.getSimpleName(), ceInfo);
                 imageView.getContext().startActivity(intent);

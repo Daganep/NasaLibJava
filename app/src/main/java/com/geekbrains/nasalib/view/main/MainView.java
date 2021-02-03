@@ -4,7 +4,6 @@ import com.geekbrains.nasalib.model.entity.NasaResponse;
 
 import moxy.MvpView;
 import moxy.viewstate.strategy.AddToEndSingleStrategy;
-import moxy.viewstate.strategy.SkipStrategy;
 import moxy.viewstate.strategy.StateStrategyType;
 
 public interface MainView extends MvpView {

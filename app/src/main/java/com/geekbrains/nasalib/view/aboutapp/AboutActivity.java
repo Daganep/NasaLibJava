@@ -4,7 +4,6 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityAboutBinding;
-
 import moxy.MvpAppCompatActivity;
 
 public class AboutActivity extends MvpAppCompatActivity {
