@@ -2,4 +2,8 @@
     <string name="app_name">NasaLib</string>
     <string name="media_preview">media preview</string>
     <string name="current_image">current image</string>
+    <string name="menu_about">About app</string>
+    <string name="search_button">search button</string>
+    <string name="settings_button">settings button</string>
+    <string name="about_button">about button</string>
 </resources>

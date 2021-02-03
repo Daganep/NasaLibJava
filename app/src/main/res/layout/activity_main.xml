@@ -20,7 +20,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/Theme.NasaLib.PopupOverlay"
-                app:title="Nasa Image Library"/>
+                app:title="Nasa Media"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
-            android:padding="@dimen/norm_padding"/>
+            android:paddingStart="@dimen/norm_padding"
+            android:paddingEnd="@dimen/norm_padding"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
