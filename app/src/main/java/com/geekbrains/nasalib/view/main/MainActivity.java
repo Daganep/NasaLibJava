@@ -24,6 +24,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     private ActivityMainBinding mainBinding;
     private final String TAG = "Retrofit";
     private int columns;
+    private final String stdQuery = "hubble";
     @InjectPresenter
     MainPresenter mainPresenter;
 
@@ -36,7 +37,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 .setContentView(this, R.layout.activity_main);
         initToolbar();
         columns = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2;
-        mainPresenter.requestFromServer();
+        mainPresenter.requestFromServer(stdQuery);
     }
 
     private void initRecycler(){
@@ -70,6 +71,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                mainPresenter.requestFromServer(query);
                 return false;
             }
 

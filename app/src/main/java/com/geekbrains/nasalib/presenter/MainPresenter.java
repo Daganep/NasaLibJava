@@ -30,8 +30,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
         App.getAppComponent().inject(this);
     }
 
-    public void requestFromServer(){
-        Observable<NasaResponse> single = retrofitApi.requestServer();
+    public void requestFromServer(String query){
+        Observable<NasaResponse> single = retrofitApi.requestServer(query);
 
         disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(emitter -> {
             nasaResponse = emitter;
