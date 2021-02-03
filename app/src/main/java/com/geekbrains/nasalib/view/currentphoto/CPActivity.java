@@ -43,7 +43,7 @@ public class CPActivity extends MvpAppCompatActivity implements CPView {
     }
 
     private void initToolbar() {
-        setSupportActionBar(cpActivity.toolbar);
+        setSupportActionBar(cpActivity.cpToolbar);
         if (getSupportActionBar() != null) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }

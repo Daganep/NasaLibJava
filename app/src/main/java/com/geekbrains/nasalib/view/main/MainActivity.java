@@ -45,9 +45,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     private void initRecycler(){
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, columns);
-        mainBinding.recyclerView.setLayoutManager(gridLayoutManager);
+        mainBinding.mainRV.setLayoutManager(gridLayoutManager);
         mainRVA = new MainRVA(mainPresenter.getMedia(), mainPresenter);
-        mainBinding.recyclerView.setAdapter(mainRVA);
+        mainBinding.mainRV.setAdapter(mainRVA);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     }
 
     private void initToolbar() {
-        setSupportActionBar(mainBinding.toolbar);
+        setSupportActionBar(mainBinding.mainToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
@@ -115,10 +115,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     public void emptyResultMessage(Boolean empty){
         if(empty){
             mainBinding.emptyResult.setVisibility(View.VISIBLE);
-            mainBinding.recyclerView.setVisibility(View.GONE);
+            mainBinding.mainRV.setVisibility(View.GONE);
         }else{
             mainBinding.emptyResult.setVisibility(View.GONE);
-            mainBinding.recyclerView.setVisibility(View.VISIBLE);
+            mainBinding.mainRV.setVisibility(View.VISIBLE);
         }
     }
 }
