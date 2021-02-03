@@ -6,4 +6,7 @@
     <string name="search_button">search button</string>
     <string name="settings_button">settings button</string>
     <string name="about_button">about button</string>
+    <string name="CP_title">Title:\n</string>
+    <string name="sec_creator">Sec creator:\n</string>
+    <string name="date_creation">Date:\n</string>
 </resources>

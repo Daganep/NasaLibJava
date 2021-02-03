@@ -18,9 +18,9 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="@color/toolbar_color"
                 app:popupTheme="@style/Theme.NasaLib.PopupOverlay"
-                app:title="Nasa Media"/>
+                app:title="Nasa Media Lib"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 

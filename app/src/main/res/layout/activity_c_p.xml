@@ -18,7 +18,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="@color/toolbar_color"
                 app:popupTheme="@style/Theme.NasaLib.PopupOverlay"/>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -27,48 +27,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/stars"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:padding="@dimen/CP_padding">
+            android:layout_marginTop="?attr/actionBarSize">
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/CP_scroll_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/black"
-                android:padding="@dimen/norm_padding">
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
 
-                <ImageView
-                    android:id="@+id/currentPhotoIV"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:background="@color/black"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/current_image">
-                </ImageView>
+                    android:padding="@dimen/norm_padding">
 
-                <TextView
-                    android:id="@+id/CPTitleTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="@dimen/CP_text_margin">
-                </TextView>
-                <TextView
-                    android:id="@+id/CPDateTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="@dimen/CP_text_margin">
-                </TextView>
-                <TextView
-                    android:id="@+id/CPCreatorTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="@dimen/CP_text_margin">
-                </TextView>
+                    <ImageView
+                        android:id="@+id/currentPhotoIV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/current_image">
+                    </ImageView>
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/CPTitleTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/CP_text_margin"
+                        android:layout_marginStart="@dimen/CP_text_margin">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/CPDateTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/CP_text_margin"
+                        android:layout_marginStart="@dimen/CP_text_margin">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/CPCreatorTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/CP_text_margin"
+                        android:layout_marginBottom="@dimen/CP_text_margin"
+                        android:layout_marginStart="@dimen/CP_text_margin">
+                    </TextView>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
         </FrameLayout>
 
