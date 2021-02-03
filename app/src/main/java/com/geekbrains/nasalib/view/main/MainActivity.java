@@ -1,5 +1,6 @@
 package com.geekbrains.nasalib.view.main;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityMainBinding;
 import com.geekbrains.nasalib.presenter.MainPresenter;
+import com.geekbrains.nasalib.view.aboutapp.AboutActivity;
+
 import moxy.MvpAppCompatActivity;
 import moxy.presenter.InjectPresenter;
 
@@ -92,6 +95,13 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 et.setText("");
             }
         });
+
+        MenuItem aboutItem = menu.findItem(R.id.about);
+        aboutItem.setOnMenuItemClickListener(item -> {
+            startActivity(new Intent(this, AboutActivity.class));
+            return false;
+        });
+
         return true;
     }
 }

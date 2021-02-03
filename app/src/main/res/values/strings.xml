@@ -9,4 +9,10 @@
     <string name="CP_title">Title:\n</string>
     <string name="sec_creator">Sec creator:\n</string>
     <string name="date_creation">Date:\n</string>
+    <string name="about_app">About app</string>
+    <string name="about_app_text">This application is designed\nas a test item.\n\nThe Nasa API is used to get
+        media.\nhttps://api.nasa.gov/\n\nDeveloper Oleg Penkin.\nGit: https://github.com/Daganep.\nE-mail: haridus@yandex.ru
+
+</string>
+    <string name="nasa_logo">Nasa logo</string>
 </resources>

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NasaLib">
-        <activity android:name=".view.currentphoto.CPActivity"></activity>
+        <activity android:name=".view.aboutapp.AboutActivity"></activity>
+        <activity android:name=".view.currentphoto.CPActivity" />
         <activity android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

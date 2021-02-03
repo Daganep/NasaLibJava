@@ -16,7 +16,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menu_info"
+        android:id="@+id/about"
         android:title="@string/about_button"
         android:icon="@android:drawable/ic_menu_help"
         android:visible="true"
