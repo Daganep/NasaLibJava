@@ -44,6 +44,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
     public List<Item> getMedia(){
         items = nasaResponse.getCollection().getItems();
         Log.d(TAG, "Total: " + nasaResponse.getCollection().getMetadata().getTotalHits());
+        getViewState().emptyResultMessage(items.size() == 0);
         return items;
     }
 

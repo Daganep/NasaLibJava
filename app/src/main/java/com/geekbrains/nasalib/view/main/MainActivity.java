@@ -102,6 +102,23 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             return false;
         });
 
+        MenuItem settingsItem = menu.findItem(R.id.menu_settings);
+        settingsItem.setOnMenuItemClickListener(item -> {
+            Toast.makeText(this, (R.string.not_work_button), Toast.LENGTH_SHORT).show();
+            return false;
+        });
+
         return true;
+    }
+
+    @Override
+    public void emptyResultMessage(Boolean empty){
+        if(empty){
+            mainBinding.emptyResult.setVisibility(View.VISIBLE);
+            mainBinding.recyclerView.setVisibility(View.GONE);
+        }else{
+            mainBinding.emptyResult.setVisibility(View.GONE);
+            mainBinding.recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 }

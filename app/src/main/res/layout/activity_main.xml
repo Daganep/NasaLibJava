@@ -32,6 +32,16 @@
             android:paddingStart="@dimen/norm_padding"
             android:paddingEnd="@dimen/norm_padding"/>
 
+        <TextView
+            android:id="@+id/emptyResult"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AboutText"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/empty_result"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

@@ -12,7 +12,8 @@
     <string name="about_app">About app</string>
     <string name="about_app_text">This application is designed\nas a test item.\n\nThe Nasa API is used to get
         media.\nhttps://api.nasa.gov/\n\nDeveloper Oleg Penkin.\nGit: https://github.com/Daganep.\nE-mail: haridus@yandex.ru
-
-</string>
+    </string>
     <string name="nasa_logo">Nasa logo</string>
+    <string name="not_work_button">Sorry, button doesn\'t work!</string>
+    <string name="empty_result">No results were found for this request.\nTry using other keywords.</string>
 </resources>
