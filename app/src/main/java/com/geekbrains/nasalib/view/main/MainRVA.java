@@ -2,7 +2,6 @@ package com.geekbrains.nasalib.view.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.model.entity.CEInfo;
 import com.geekbrains.nasalib.model.entity.Item;
-import com.geekbrains.nasalib.model.entity.NasaResponse;
 import com.geekbrains.nasalib.model.picasso.ImageSetter;
-import com.geekbrains.nasalib.presenter.MainPresenter;
 import com.geekbrains.nasalib.view.currentphoto.CPActivity;
 
 import java.util.List;
@@ -76,6 +73,7 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
         void bind(int position){
             this.position = position;
             ceInfo = new CEInfo(items.get(position));
+            if(items.get(position).getLinks() != null)
             imageSetter.setImage(items.get(position).getLinks().get(0).getHref(), imageView);
         }
     }

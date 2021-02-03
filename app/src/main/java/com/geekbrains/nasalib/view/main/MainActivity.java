@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -57,7 +56,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     public void updateRecyclerView(NasaResponse nasaResponse){
 
         if (nasaResponse != null && nasaResponse.getCollection() != null && nasaResponse.getCollection().getItems() != null){
-            Log.d(TAG, "in MA");
             emptyResultMessage(nasaResponse.getCollection().getItems().size() == 0);
             mainRVA.setMedia(nasaResponse.getCollection().getItems());
             mainRVA.notifyDataSetChanged();
