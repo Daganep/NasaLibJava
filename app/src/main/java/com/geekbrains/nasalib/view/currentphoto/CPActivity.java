@@ -33,7 +33,7 @@ public class CPActivity extends MvpAppCompatActivity implements CPView {
     public void setData(CEInfo ceInfo) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(ceInfo.getTitle());
         String creator = "unknown";
-        if(ceInfo.getData() == null) creator = ceInfo.getData();
+        if(ceInfo.getCreator() == null) creator = ceInfo.getCreator();
         imageSetter.setImage(ceInfo.getURL(), cpActivity.currentPhotoIV);
         cpActivity.CPTitleTV.setText(String.format("%s%s", getString(R.string.CP_title), ceInfo.getTitle()));
         cpActivity.CPCreatorTV.setText(String.format("%s%s", getString(R.string.sec_creator), creator));
