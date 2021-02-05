@@ -1,6 +1,5 @@
 package com.geekbrains.nasalib.di;
 
-import com.geekbrains.nasalib.presenter.CPPresenter;
 import com.geekbrains.nasalib.presenter.MainPresenter;
 import javax.inject.Singleton;
 import dagger.Component;
@@ -10,6 +9,4 @@ import dagger.Component;
 public interface AppComponent {
 
     void inject(MainPresenter mainPresenter);
-
-    void inject(CPPresenter cpPresenter);
 }

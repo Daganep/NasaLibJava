@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class CEInfo implements Serializable {
 
     private String URL;
-    private String title = "unknown";
-    private String data = "unknown";
-    private String creator = "unknown";
+    private String title;
+    private String data;
+    private String creator;
 
     public CEInfo(Item item){
         if(item.getLinks() != null)
