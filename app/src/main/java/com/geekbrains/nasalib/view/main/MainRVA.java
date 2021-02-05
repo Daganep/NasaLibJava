@@ -53,7 +53,6 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
     class ImageViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        int position;
         CEInfo ceInfo;
 
         public ImageViewHolder(@NonNull View itemView) {
@@ -67,7 +66,6 @@ public class MainRVA extends RecyclerView.Adapter<MainRVA.ImageViewHolder> {
         }
 
         void bind(int position){
-            this.position = position;
             ceInfo = new CEInfo(items.get(position));
             if(items.get(position).getLinks() != null)
             imageSetter.setImage(items.get(position).getLinks().get(0).getHref(), imageView);

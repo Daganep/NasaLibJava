@@ -19,7 +19,7 @@ public class AboutActivity extends MvpAppCompatActivity {
     }
 
     private void initToolbar() {
-        setSupportActionBar(aboutBinding.toolbar);
+        setSupportActionBar(aboutBinding.aboutToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }

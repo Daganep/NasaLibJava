@@ -9,7 +9,4 @@ import moxy.viewstate.strategy.StateStrategyType;
 public interface MainView extends MvpView {
     @StateStrategyType(value = AddToEndSingleStrategy.class)
     void updateRecyclerView(NasaResponse nasaResponse);
-
-    @StateStrategyType(value = AddToEndSingleStrategy.class)
-    void emptyResultMessage(Boolean empty);
 }
