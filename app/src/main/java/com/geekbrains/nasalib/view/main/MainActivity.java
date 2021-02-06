@@ -112,12 +112,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             startActivity(new Intent(this, AboutActivity.class));
             return false;
         });
-
-        MenuItem settingsItem = menu.findItem(R.id.menu_settings);
-        settingsItem.setOnMenuItemClickListener(item -> {
-            Toast.makeText(this, (R.string.not_work_button), Toast.LENGTH_SHORT).show();
-            return false;
-        });
         return true;
     }
 
