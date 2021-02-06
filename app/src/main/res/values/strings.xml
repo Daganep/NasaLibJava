@@ -18,4 +18,5 @@
     <string name="empty_result">No results were found for this request.\nTry using other keywords.</string>
     <string name="last_key">Last key</string>
     <string name="empty_string">empty string</string>
+    <string name="std_keyword">hubble</string>
 </resources>

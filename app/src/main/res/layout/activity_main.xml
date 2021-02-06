@@ -24,8 +24,16 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/mainPB"
+            android:layout_width="@dimen/logo_side"
+            android:layout_height="@dimen/logo_side"
+            android:layout_gravity="center"
+            style="?android:progressBarStyle"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id= "@+id/mainRV"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"

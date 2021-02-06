@@ -29,7 +29,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     private ActivityMainBinding mainBinding;
     private int columns;
     private String lastQuery;
-    private final String currentQuery = "hubble";
     private MainRVA mainRVA;
     @InjectPresenter
     MainPresenter mainPresenter;
@@ -43,6 +42,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         initToolbar();
         initRecycler();
         loadLastKey();
+        String currentQuery = getString(R.string.std_keyword);
         if(lastQuery.equals(getString(R.string.empty_string)))lastQuery = currentQuery;
         mainPresenter.requestFromServer(lastQuery);
     }
@@ -82,6 +82,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                mainBinding.mainPB.setVisibility(View.VISIBLE);
+                mainBinding.mainRV.setVisibility(View.GONE);
                 mainPresenter.requestFromServer(query);
                 lastQuery = query;
                 return false;
@@ -126,6 +128,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         }else{
             mainBinding.emptyResult.setVisibility(View.GONE);
             mainBinding.mainRV.setVisibility(View.VISIBLE);
+            mainBinding.mainPB.setVisibility(View.GONE);
         }
     }
 
