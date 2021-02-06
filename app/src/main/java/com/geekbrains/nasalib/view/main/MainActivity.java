@@ -1,8 +1,10 @@
 package com.geekbrains.nasalib.view.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,7 +28,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     private ActivityMainBinding mainBinding;
     private int columns;
-    private final String stdQuery = "hubble";
+    private String lastQuery;
+    private final String currentQuery = "hubble";
     private MainRVA mainRVA;
     @InjectPresenter
     MainPresenter mainPresenter;
@@ -39,7 +42,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         columns = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2;
         initToolbar();
         initRecycler();
-        mainPresenter.requestFromServer(stdQuery);
+        loadLastKey();
+        if(lastQuery.equals(getString(R.string.empty_string)))lastQuery = currentQuery;
+        mainPresenter.requestFromServer(lastQuery);
     }
 
     private void initRecycler(){
@@ -52,6 +57,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @Override
     public void updateRecyclerView(NasaResponse nasaResponse){
         if (nasaResponse != null && nasaResponse.getCollection() != null && nasaResponse.getCollection().getItems() != null){
+            if(nasaResponse.getCollection().getItems().size() != 0)saveLastKey(lastQuery);
             emptyResultMessage(nasaResponse.getCollection().getItems().size() == 0);
             mainRVA.setMedia(nasaResponse.getCollection().getItems());
             mainRVA.notifyDataSetChanged();
@@ -77,6 +83,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mainPresenter.requestFromServer(query);
+                lastQuery = query;
                 return false;
             }
 
@@ -112,7 +119,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         return true;
     }
 
-    public void emptyResultMessage(Boolean empty){
+    private void emptyResultMessage(Boolean empty){
         if(empty){
             mainBinding.emptyResult.setVisibility(View.VISIBLE);
             mainBinding.mainRV.setVisibility(View.GONE);
@@ -120,5 +127,17 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             mainBinding.emptyResult.setVisibility(View.GONE);
             mainBinding.mainRV.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void saveLastKey(String key){
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(getString(R.string.last_key), key);
+        editor.apply();
+    }
+
+    private void loadLastKey(){
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        lastQuery = prefs.getString(getString(R.string.last_key), getString(R.string.empty_string));
     }
 }
