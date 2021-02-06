@@ -122,13 +122,13 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     }
 
     private void emptyResultMessage(Boolean empty){
+        mainBinding.mainPB.setVisibility(View.GONE);
         if(empty){
             mainBinding.emptyResult.setVisibility(View.VISIBLE);
             mainBinding.mainRV.setVisibility(View.GONE);
         }else{
             mainBinding.emptyResult.setVisibility(View.GONE);
             mainBinding.mainRV.setVisibility(View.VISIBLE);
-            mainBinding.mainPB.setVisibility(View.GONE);
         }
     }
 
