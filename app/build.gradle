@@ -77,4 +77,9 @@ dependencies {
 
     //Use pref
     implementation 'androidx.preference:preference:1.1.1'
+
+    //Room
+    implementation 'androidx.room:room-runtime:2.2.6'
+    annotationProcessor 'androidx.room:room-compiler:2.2.6'
+    implementation 'androidx.room:room-rxjava2:2.2.6'
 }
