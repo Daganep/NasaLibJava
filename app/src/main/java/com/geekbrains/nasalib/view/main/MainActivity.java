@@ -11,14 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import com.geekbrains.nasalib.R;
 import com.geekbrains.nasalib.databinding.ActivityMainBinding;
-import com.geekbrains.nasalib.model.entity.NasaResponse;
+import com.geekbrains.nasalib.model.entity.Element;
 import com.geekbrains.nasalib.presenter.MainPresenter;
 import com.geekbrains.nasalib.view.aboutapp.AboutActivity;
+
+import java.util.List;
 
 import moxy.MvpAppCompatActivity;
 import moxy.presenter.InjectPresenter;
@@ -43,7 +46,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         loadLastKey();
         String currentQuery = getString(R.string.std_keyword);
         if(lastQuery.equals(getString(R.string.empty_string)))lastQuery = currentQuery;
-        mainPresenter.requestFromServer(lastQuery);
+        mainPresenter.requestFromDB();
     }
 
     private void initRecycler(){
@@ -54,12 +57,22 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     }
 
     @Override
-    public void updateRecyclerView(NasaResponse nasaResponse){
-        if (nasaResponse != null && nasaResponse.getCollection() != null && nasaResponse.getCollection().getItems() != null){
-            if(nasaResponse.getCollection().getItems().size() != 0)saveLastKey(lastQuery);
-            emptyResultMessage(nasaResponse.getCollection().getItems().size() == 0);
-            mainRVA.setMedia(nasaResponse.getCollection().getItems());
+    public void updateRecyclerView(List<Element> elements){
+        if (elements != null){
+            if(elements.size() != 0)saveLastKey(lastQuery);
+            emptyResultMessage(elements.size() == 0);
+            mainRVA.setMedia(elements);
             mainRVA.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void checkDB(List<Element> elements){
+        if (elements != null && elements.size() != 0){
+            updateRecyclerView(elements);
+        }
+        else {
+            mainPresenter.requestFromServer(lastQuery);
         }
     }
 
@@ -135,5 +148,11 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     private void loadLastKey(){
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         lastQuery = prefs.getString(getString(R.string.last_key), getString(R.string.empty_string));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mainPresenter.saveLastResult();
     }
 }

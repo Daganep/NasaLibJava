@@ -1,7 +1,11 @@
 package com.geekbrains.nasalib.di;
 
 import android.app.Application;
-import com.geekbrains.nasalib.model.entity.NasaResponse;
+import android.content.Context;
+
+import androidx.room.Room;
+
+import com.geekbrains.nasalib.model.database.AppDatabase;
 import com.geekbrains.nasalib.utils.picasso.ImageSetter;
 import com.geekbrains.nasalib.model.retrofit.RetrofitApi;
 import javax.inject.Singleton;
@@ -18,13 +22,24 @@ public class AppModule {
 
     @Singleton
     @Provides
+    AppDatabase provideDatabase(Context context) {
+        return Room.databaseBuilder(context,
+                AppDatabase.class, "nasalib_database")
+                .fallbackToDestructiveMigration()
+                .build();
+    }
+
+    @Singleton
+    @Provides
     RetrofitApi provideRetrofitApi(){return new RetrofitApi();}
 
     @Singleton
     @Provides
-    NasaResponse provideNasaResponse(){return new NasaResponse();}
+    ImageSetter provideImageSetter(){return new ImageSetter();}
 
     @Singleton
     @Provides
-    ImageSetter provideImageSetter(){return new ImageSetter();}
+    Context provideContext() {
+        return application;
+    }
 }
