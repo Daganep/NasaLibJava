@@ -3,8 +3,10 @@
     <words>
       <w>aboutapp</w>
       <w>currentphoto</w>
+      <w>gson</w>
       <w>itemdata</w>
       <w>meatdata</w>
+      <w>moxy</w>
     </words>
   </dictionary>
 </component>
