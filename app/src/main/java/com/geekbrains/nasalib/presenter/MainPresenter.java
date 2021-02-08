@@ -51,6 +51,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
         List<Element> info = new ArrayList<>();
         if(response.getCollection().getItems() != null){
             for(Item x : response.getCollection().getItems()){
+                if(x.getLinks() != null)
                 info.add(new Element(x));
             }
         }
