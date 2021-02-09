@@ -46,7 +46,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         loadLastKey();
         String currentQuery = getString(R.string.std_keyword);
         if(lastQuery.equals(getString(R.string.empty_string)))lastQuery = currentQuery;
-        mainPresenter.requestFromDB();
+        mainPresenter.requestData(lastQuery);
     }
 
     private void initRecycler(){
@@ -65,16 +65,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             saveLastKey(lastQuery);
             mainRVA.setMedia(elements);
             mainRVA.notifyDataSetChanged();
-        }
-    }
-
-    @Override
-    public void checkDB(List<Element> elements){
-        if (elements != null && elements.size() != 0){
-            updateRecyclerView(elements);
-        }
-        else {
-            mainPresenter.requestFromServer(lastQuery);
         }
     }
 

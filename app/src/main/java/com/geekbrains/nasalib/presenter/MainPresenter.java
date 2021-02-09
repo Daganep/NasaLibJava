@@ -43,6 +43,10 @@ public class MainPresenter extends MvpPresenter<MainView> {
         subscriptions = new CompositeDisposable();
     }
 
+    public void requestData(String query){
+        requestFromDB(query);
+    }
+
     public void requestFromServer(String query){
         Observable<NasaResponse> single = retrofitApi.requestServer(query);
         subscriptions.add(single.observeOn(AndroidSchedulers.mainThread()).subscribe(emitter -> {
@@ -75,12 +79,13 @@ public class MainPresenter extends MvpPresenter<MainView> {
         return info;
     }
 
-    public void requestFromDB(){
+    private void requestFromDB(String query){
         subscriptions.add(elementDao.getAll().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe( elements1 -> {
                             elements = elements1;
-                            getViewState().checkDB(elements1);
+                            if(elements1 == null) requestFromServer(query);
+                            else getViewState().updateRecyclerView(elements);
                         },
                         throwable -> Log.e(TAG, "onError" + throwable)));
     }

@@ -13,8 +13,5 @@ public interface MainView extends MvpView {
     void updateRecyclerView(List<Element> elements);
 
     @StateStrategyType(value = AddToEndSingleStrategy.class)
-    void checkDB(List<Element> elements);
-
-    @StateStrategyType(value = AddToEndSingleStrategy.class)
     void showError(int msg);
 }
