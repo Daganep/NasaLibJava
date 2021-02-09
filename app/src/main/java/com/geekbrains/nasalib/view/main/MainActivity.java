@@ -59,8 +59,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @Override
     public void updateRecyclerView(List<Element> elements){
         if (elements != null){
-            if(elements.size() != 0)saveLastKey(lastQuery);
-            emptyResultMessage(elements.size() == 0);
+            mainBinding.mainPB.setVisibility(View.GONE);
+            mainBinding.emptyResult.setVisibility(View.GONE);
+            mainBinding.mainRV.setVisibility(View.VISIBLE);
+            saveLastKey(lastQuery);
             mainRVA.setMedia(elements);
             mainRVA.notifyDataSetChanged();
         }
@@ -75,6 +77,16 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             mainPresenter.requestFromServer(lastQuery);
         }
     }
+
+    @Override
+    public void showError(int msg) {
+        mainBinding.mainPB.setVisibility(View.GONE);
+        mainBinding.emptyResult.setText(msg);
+        mainBinding.emptyResult.setVisibility(View.VISIBLE);
+        mainBinding.mainRV.setVisibility(View.GONE);
+    }
+
+
 
     private void initToolbar() {
         setSupportActionBar(mainBinding.mainToolbar);
@@ -94,8 +106,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                mainBinding.mainPB.setVisibility(View.VISIBLE);
+                mainBinding.emptyResult.setVisibility(View.GONE);
                 mainBinding.mainRV.setVisibility(View.GONE);
+                mainBinding.mainPB.setVisibility(View.VISIBLE);
                 mainPresenter.requestFromServer(query);
                 lastQuery = query;
                 return false;
@@ -125,17 +138,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             return false;
         });
         return true;
-    }
-
-    private void emptyResultMessage(Boolean empty){
-        mainBinding.mainPB.setVisibility(View.GONE);
-        if(empty){
-            mainBinding.emptyResult.setVisibility(View.VISIBLE);
-            mainBinding.mainRV.setVisibility(View.GONE);
-        }else{
-            mainBinding.emptyResult.setVisibility(View.GONE);
-            mainBinding.mainRV.setVisibility(View.VISIBLE);
-        }
     }
 
     private void saveLastKey(String key){

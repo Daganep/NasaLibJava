@@ -14,4 +14,7 @@ public interface MainView extends MvpView {
 
     @StateStrategyType(value = AddToEndSingleStrategy.class)
     void checkDB(List<Element> elements);
+
+    @StateStrategyType(value = AddToEndSingleStrategy.class)
+    void showError(int msg);
 }
