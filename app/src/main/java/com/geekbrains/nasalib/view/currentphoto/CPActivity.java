@@ -27,7 +27,7 @@ public class CPActivity extends AppCompatActivity {
 
     public void setData(Element element) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(element.getTitle());
-        String creator = "unknown";
+        String creator = getString(R.string.unknown);
         if(element.getCreator() != null) creator = element.getCreator();
         imageSetter.setImage(element.getURL(), cpActivity.currentPhotoIV);
         cpActivity.CPTitleTV.setText(String.format("%s%s", getString(R.string.CP_title), element.getTitle()));

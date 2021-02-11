@@ -12,13 +12,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitApi {
     private final String baseUrl = "https://images-api.nasa.gov/";
-    private RetrofitService api;
+    private final RetrofitService api;
 
-    public Observable<NasaResponse> requestServer(String q){
+    public RetrofitApi(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
         GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(gson);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new ErrorInterceptor())
+                .build();
+
         api = new Retrofit.Builder()
                 .client(client)
                 .baseUrl(baseUrl)
@@ -26,11 +31,9 @@ public class RetrofitApi {
                 .addConverterFactory(gsonConverterFactory)
                 .build()
                 .create(RetrofitService.class);
-
-        return api.getMedia(q, "1").subscribeOn(Schedulers.io());
     }
 
-    OkHttpClient client = new OkHttpClient.Builder()
-            .addInterceptor(new ErrorInterceptor())
-            .build();
+    public Observable<NasaResponse> requestServer(String q){
+        return api.getMedia(q, "1").subscribeOn(Schedulers.io());
+    }
 }
