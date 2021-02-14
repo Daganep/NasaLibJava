@@ -100,6 +100,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 mainBinding.mainRV.setVisibility(View.GONE);
                 mainBinding.mainPB.setVisibility(View.VISIBLE);
                 mainPresenter.requestFromServer(query);
+                mainBinding.mainRV.smoothScrollToPosition(0);
                 lastQuery = query;
                 return false;
             }
