@@ -20,6 +20,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/toolbar_color"
                 app:popupTheme="@style/Theme.NasaLib.PopupOverlay"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:title="Nasa Media Lib"/>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -36,7 +37,7 @@
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:paddingStart="@dimen/norm_padding"
             android:paddingEnd="@dimen/norm_padding"/>
 
