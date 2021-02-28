@@ -84,7 +84,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe( elements1 -> {
                             elements = elements1;
-                            if(elements1 == null) requestFromServer(query);
+                            if(elements1.size() == 0) requestFromServer(query);
                             else getViewState().updateRecyclerView(elements);
                         },
                         throwable -> Log.e(TAG, "onError" + throwable)));
