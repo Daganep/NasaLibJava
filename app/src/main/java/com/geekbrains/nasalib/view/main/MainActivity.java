@@ -76,8 +76,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         mainBinding.mainRV.setVisibility(View.GONE);
     }
 
-
-
     private void initToolbar() {
         setSupportActionBar(mainBinding.mainToolbar);
         if (getSupportActionBar() != null) {
